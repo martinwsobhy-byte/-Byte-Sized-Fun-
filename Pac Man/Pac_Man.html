@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pac-Man Game Launcher</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="game-container">
+        <div class="header">
+            <h1>🟡 PAC-MAN</h1>
+            <p class="subtitle">Classic Arcade Game</p>
+        </div>
+
+        <div class="game-preview">
+            <div class="preview-maze">
+                <div class="maze-row">
+                    <span class="wall">█</span>
+                    <span class="wall">█</span>
+                    <span class="wall">█</span>
+                    <span class="wall">█</span>
+                    <span class="wall">█</span>
+                </div>
+                <div class="maze-row">
+                    <span class="wall">█</span>
+                    <span class="dot">·</span>
+                    <span class="pacman">🟡</span>
+                    <span class="dot">·</span>
+                    <span class="wall">█</span>
+                </div>
+                <div class="maze-row">
+                    <span class="wall">█</span>
+                    <span class="dot">·</span>
+                    <span class="ghost">👻</span>
+                    <span class="dot">·</span>
+                    <span class="wall">█</span>
+                </div>
+                <div class="maze-row">
+                    <span class="wall">█</span>
+                    <span class="wall">█</span>
+                    <span class="wall">█</span>
+                    <span class="wall">█</span>
+                    <span class="wall">█</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-info">
+            <h2>How to Play:</h2>
+            <ul>
+                <li>🟡 Collect all dots to complete the level</li>
+                <li>👻 Avoid the 4 ghosts chasing you</li>
+                <li>⚪ Eat power pellets to make ghosts scared</li>
+                <li>❤️ You have 3 lives to survive</li>
+                <li>🎮 Use WASD or Arrow keys to move</li>
+            </ul>
+        </div>
+
+        <div class="controls">
+            
+            <button class="play-btn" onclick="playWebVersion()" style="background: linear-gradient(200deg, #28a745 0%, #20c997 100%);">🌐 Play Pac Man 🌐</button>
+            <button class="menu-btn" onclick="backToGamesZone()">🏠 Games Zone</button>
+        </div>
+
+        
+    </div>
+
+    <script>
+        function startGame() {
+            alert('Starting Pac-Man Game...\n\nIf the game doesn\'t start automatically, please run "pacman_game.exe" manually.');
+            
+            // Try to launch the game
+            try {
+                window.location.href = 'pacman_game.exe';
+            } catch(e) {
+                setTimeout(() => {
+                    alert('Please run "pacman_game.exe" from the Pac Man folder.');
+                }, 1000);
+            }
+        }
+
+        function playWebVersion() {
+            // Redirect to dedicated web game page
+            window.location.href = 'web_game.html';
+        }
+
+        function backToGamesZone() {
+            window.location.href = '../games_area/main_menu.html';
+        }
+        
+        function backToLauncher() {
+            location.reload();
+        }
+
+        // Visual effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const pacman = document.querySelector('.pacman');
+            const ghost = document.querySelector('.ghost');
+            
+            // Animate Pac-Man
+            setInterval(() => {
+                pacman.style.transform = pacman.style.transform === 'scale(1.2)' ? 'scale(1)' : 'scale(1.2)';
+            }, 500);
+            
+            // Animate ghost
+            setInterval(() => {
+                ghost.style.transform = ghost.style.transform === 'translateY(-2px)' ? 'translateY(2px)' : 'translateY(-2px)';
+            }, 800);
+        });
+    </script>
+</body>
+</html>
