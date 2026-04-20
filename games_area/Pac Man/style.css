@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.game-container {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 48px;
+    color: #ffff00;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+    margin-bottom: 20px;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-around;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    text-align: center;
+    font-weight: bold;
+}
+
+.info-item span:first-child {
+    display: block;
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 5px;
+}
+
+.info-item span:last-child {
+    font-size: 24px;
+    color: #ffff00;
+}
+
+.game-board {
+    margin: 20px 0;
+    display: inline-block;
+    border: 4px solid #ffff00;
+    border-radius: 10px;
+    background: #000;
+}
+
+#gameCanvas {
+    display: block;
+    background: #000;
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+.control-instructions {
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.control-keys {
+    display: inline-block;
+}
+
+.key-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 5px 0;
+}
+
+.control-key {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid #ffff00;
+    border-radius: 10px;
+    color: #ffff00;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.control-key:hover {
+    background: rgba(255, 255, 0, 0.2);
+    transform: scale(1.1);
+}
+
+.control-key:active {
+    transform: scale(0.95);
+}
+
+/* Game Over Screen */
+.game-over, .victory {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.game-over-content, .victory-content {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    padding: 50px;
+    border-radius: 20px;
+    text-align: center;
+    border: 3px solid #ffff00;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+.game-over-content h2 {
+    color: #ff4444;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.victory-content h2 {
+    color: #44ff44;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.game-over-content p, .victory-content p {
+    font-size: 20px;
+    margin: 15px 0;
+    color: #ccc;
+}
+
+.game-over-content span, .victory-content span {
+    color: #ffff00;
+    font-weight: bold;
+}
+
+.restart-btn, .next-btn, .menu-btn ,.play-btn{
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+
+
+
+.restart-btn, .next-btn {
+    background: linear-gradient(135deg, #ffff00 0%, #ffa500 100%);
+    color: #000;
+}
+
+.menu-btn {
+    background: linear-gradient(135deg, #666 0%, #999 100%);
+    color: white;
+}
+
+.restart-btn:hover, .next-btn:hover, .menu-btn:hover , .play-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 32px;
+    }
+    
+    .game-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    #gameCanvas {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+    }
+    
+    .control-key {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-container { padding: 12px; }
+    .header h1 { font-size: 24px; }
+    #gameCanvas { max-width: 100%; }
+    .control-key { width: 50px; height: 50px; font-size: 20px; }
+    .game-over-content, .victory-content { padding: 25px 15px; }
+    .game-over-content h2, .victory-content h2 { font-size: 26px; }
+    .restart-btn, .next-btn, .menu-btn { padding: 12px 20px; font-size: 15px; }
+}
+
+/* Animation for Pac-Man */
+@keyframes pacman-chomp {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(45deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.pacman-chomp {
+    animation: pacman-chomp 0.2s infinite;
+}
+
+/* Ghost Animation */
+@keyframes ghost-float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-3px); }
+}
+
+.ghost-float {
+    animation: ghost-float 1s ease-in-out infinite;
+}
