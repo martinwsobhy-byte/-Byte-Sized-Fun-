@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Game</title>
+    <link rel="stylesheet" href="chess.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>♔♕ Chess Game</h1>
+            <div class="game-info">
+                <div class="info-item">
+                    <span class="info-label">Mode:</span>
+                    <span class="info-value" id="gameMode">vs AI</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Turn:</span>
+                    <span class="info-value" id="currentTurn">White</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Moves:</span>
+                    <span class="info-value" id="moveCount">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-content">
+            <div class="board-container">
+                <div class="captured-pieces" id="capturedWhite"></div>
+                <div class="chess-board" id="chessBoard"></div>
+                <div class="captured-pieces" id="capturedBlack"></div>
+            </div>
+
+            <div class="game-controls">
+                <div class="player-info">
+                    <div class="player black-player" id="blackPlayer">
+                        <div class="player-icon">♚</div>
+                        <div class="player-details">
+                            <h3 id="blackPlayerName">AI</h3>
+                            <p>Black</p>
+                            <div class="player-timer" id="blackTimer" style="display: none;">10:00</div>
+                        </div>
+                        <div class="player-turn" id="blackTurn"></div>
+                    </div>
+
+                    <div class="player white-player" id="whitePlayer">
+                        <div class="player-icon">♔</div>
+                        <div class="player-details">
+                            <h3 id="whitePlayerName">You</h3>
+                            <p>White</p>
+                            <div class="player-timer" id="whiteTimer" style="display: none;">10:00</div>
+                        </div>
+                        <div class="player-turn" id="whiteTurn">Your Turn!</div>
+                    </div>
+                </div>
+
+                <div class="game-stats">
+                    <h3>📊 Game Stats</h3>
+                    <div class="stat-item">
+                        <span>Total Moves:</span>
+                        <span id="totalMoves">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Captures:</span>
+                        <span id="captures">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Time:</span>
+                        <span id="gameTime">0:00</span>
+                    </div>
+                </div>
+
+                <div class="move-history">
+                    <h3>📜 Move History</h3>
+                    <div class="moves-list" id="movesList"></div>
+                </div>
+
+                <div class="game-buttons">
+                    <button class="game-btn restart-btn" onclick="restartGame()">🔄 New Game</button>
+                    <button class="game-btn setup-btn" onclick="goToSetup()">⚙️ Setup</button>
+                    <button class="game-btn menu-btn" onclick="goToMenu()">🏠 Menu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="gameOverModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="gameOverTitle">♔ Checkmate!</h2>
+            </div>
+            <div class="modal-body">
+                <div class="winner-icon" id="winnerIcon">♔</div>
+                <h3 id="winnerName">White Wins!</h3>
+                <p id="winnerMessage">Congratulations!</p>
+                <div class="final-stats">
+                    <div class="final-stat">
+                        <span class="stat-label">Total Moves:</span>
+                        <span class="stat-value" id="finalMoves">0</span>
+                    </div>
+                    <div class="final-stat">
+                        <span class="stat-label">Game Time:</span>
+                        <span class="stat-value" id="finalTime">0:00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn play-again-btn" onclick="restartGame()">🔄 Play Again</button>
+                <button class="modal-btn menu-btn" onclick="goToMenu()">🏠 Main Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="chess.js"></script>
+</body>
+</html>
