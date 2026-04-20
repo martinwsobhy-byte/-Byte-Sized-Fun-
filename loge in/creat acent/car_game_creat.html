@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an account</title>
+    <link rel="stylesheet" href="car_game_creat.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <div class="logo">
+                <span class="logo-text">
+                    <span class="fun">Fun</span><span class="icon">🎮</span><span class="byte">Byte-Sized</span>
+                </span>
+                <div class="logo-subtitle">Classic Games Program</div>
+            </div>
+        </div>
+        
+        <div class="form-box">
+            <h1>Create a new account</h1>
+            <form id="createAccountForm">
+                <div class="input-group">
+                    <label for="username">Name</label>
+                    <input type="text" id="username" name="username" required placeholder="Enter your name">
+                </div>
+
+                <div class="input-group">
+                    <label for="phone">phone number</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter password">
+                </div>
+
+                <div class="input-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Re-enter your password">
+                </div>
+
+                <button type="submit" class="btn-submit">Create Account</button>
+                <p class="login-link">Already have an account? <a href="../index.html">Log in</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('createAccountForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('The password does not match!');
+                return;
+            }
+
+            // Get saved users
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+
+            // Check if phone number is already registered
+            const phoneExists = users.some(user => user.phone === phone);
+            if (phoneExists) {
+                alert('The phone number is already registered!');
+                return;
+            }
+
+            // Add new user
+            const newUser = {
+                username: username,
+                phone: phone,
+                password: password
+            };
+
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+
+            alert('Account created successfully!');
+            window.location.href = '../index.html';        });
+    </script>
+</body>
+</html>

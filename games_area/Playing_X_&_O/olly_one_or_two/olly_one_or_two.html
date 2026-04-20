@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X and O - Game Mode Selection</title>
+    <link rel="stylesheet" href="olly_one_or_two.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎮 X and O Game</h1>
+            <p class="subtitle">Choose Your Game Mode</p>
+        </div>
+
+        <div class="game-preview">
+            <div class="board-preview">
+                <div class="cell">X</div>
+                <div class="cell">O</div>
+                <div class="cell">X</div>
+                <div class="cell">O</div>
+                <div class="cell">X</div>
+                <div class="cell">O</div>
+                <div class="cell">X</div>
+                <div class="cell">O</div>
+                <div class="cell">X</div>
+            </div>
+        </div>
+
+        <div class="mode-selection">
+            <div class="mode-card" onclick="selectMode('single')">
+                <div class="mode-icon">🤖</div>
+                <h3>Play vs AI</h3>
+                <p>Challenge our smart AI opponent</p>
+                <ul>
+                    <li>✅ Perfect for practice</li>
+                    <li>🧠 Intelligent AI opponent</li>
+                    <li>⚡ Instant gameplay</li>
+                </ul>
+                <button class="mode-btn single-btn">Play vs AI</button>
+            </div>
+
+            <div class="mode-card" onclick="selectMode('multiplayer')">
+                <div class="mode-icon">👥</div>
+                <h3>Play vs Friend</h3>
+                <p>Play with a friend on the same device</p>
+                <ul>
+                    <li>👫 Two player mode</li>
+                    <li>🏆 Compete with friends</li>
+                    <li>🎯 Turn-based gameplay</li>
+                </ul>
+                <button class="mode-btn multi-btn">Play vs Friend</button>
+            </div>
+        </div>
+
+        <div class="game-info">
+            <h3>How to Play:</h3>
+            <div class="rules">
+                <div class="rule">
+                    <span class="rule-number">1</span>
+                    <span class="rule-text">Players take turns placing X and O</span>
+                </div>
+                <div class="rule">
+                    <span class="rule-number">2</span>
+                    <span class="rule-text">Get 3 in a row to win (horizontal, vertical, or diagonal)</span>
+                </div>
+                <div class="rule">
+                    <span class="rule-number">3</span>
+                    <span class="rule-text">If the board fills up with no winner, it's a tie</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="back-btn" onclick="goBack()">🏠 Back to Games</button>
+        </div>
+    </div>
+
+    <script src="olly_one_or_two.js"></script>
+</body>
+</html>
