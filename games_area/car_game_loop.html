@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Game</title>
+    <link rel="stylesheet" href="car_game_loop.css">
+</head>
+<body>
+    <!-- شاشة اختيار السيارة -->
+    <div id="carSelection" class="selection-screen">
+        <div class="selection-container">
+            <h1>🏎️ Choose your car</h1>
+            
+            <div class="player-info">
+                <p><span id="playerName"></span>!</p>
+            </div>
+
+            <div class="car-options">
+                <div class="car-option" onclick="selectCarType('sedan')">
+                    <div class="car-preview sedan-preview"></div>
+                    <p>Sedan</p>
+                </div>
+                <div class="car-option" onclick="selectCarType('suv')">
+                    <div class="car-preview suv-preview"></div>
+                    <p>SUV</p>
+                </div>
+                <div class="car-option" onclick="selectCarType('sports')">
+                    <div class="car-preview sports-preview"></div>
+                    <p>Sports</p>
+                </div>
+            </div>
+
+            <h2>Choose Color</h2>
+            <div class="color-options">
+                <div class="color-btn" style="background: #ff0000;" onclick="selectColor('#ff0000')"></div>
+                <div class="color-btn" style="background: #0000ff;" onclick="selectColor('#0000ff')"></div>
+                <div class="color-btn" style="background: #00ff00;" onclick="selectColor('#00ff00')"></div>
+                <div class="color-btn" style="background: #ffff00;" onclick="selectColor('#ffff00')"></div>
+                <div class="color-btn" style="background: #ff00ff;" onclick="selectColor('#ff00ff')"></div>
+                <div class="color-btn" style="background: #00ffff;" onclick="selectColor('#00ffff')"></div>
+                <div class="color-btn" style="background: #ffffff; border: 2px solid #333;" onclick="selectColor('#ffffff')"></div>
+                <div class="color-btn" style="background: #000000;" onclick="selectColor('#000000')"></div>
+            </div>
+
+            <button class="start-btn" onclick="startGame()">Start Game</button>
+        </div>
+    </div>
+
+    <!-- شاشة اللعبة -->
+    <div id="gameScreen" class="game-screen" style="display: none;">
+        <div class="game-info">
+            <div class="info-item">
+                <span>Score:</span>
+                <span id="score">0</span>
+            </div>
+            <div class="info-item">
+                <span>Speed:</span>
+                <span id="speed">1</span>
+            </div>
+            <div class="info-item">
+                <span>Distance:</span>
+                <span id="distance">0</span>
+            </div>
+            <div class="info-item">
+                <span>Lane:</span>
+                <span id="currentLane">3</span>
+            </div>
+        </div>
+
+        <canvas id="gameCanvas"></canvas>
+
+        <div class="controls">
+            <button class="control-btn" onclick="moveLeft()">⬅️</button>
+            <button class="control-btn" onclick="moveRight()">➡️</button>
+        </div>
+    </div>
+
+    <!-- شاشة Game Over -->
+    <div id="gameOver" class="game-over" style="display: none;">
+        <div class="game-over-container">
+            <h1>💥 The game is over!</h1>
+            <div class="final-stats">
+                <p>Final points: <span id="finalScore">0</span></p>
+                <p>Distance traveled: <span id="finalDistance">0</span></p>
+                <p>Maximum speed: <span id="maxSpeed">0</span></p>
+            </div>
+            <button class="restart-btn" onclick="restartGame()">Play again</button>
+            <button class="menu-btn" onclick="backToMenu()">Main menu</button>
+        </div>
+    </div>
+
+    <script src="car_game_loop.js"></script>
+</body>
+</html>

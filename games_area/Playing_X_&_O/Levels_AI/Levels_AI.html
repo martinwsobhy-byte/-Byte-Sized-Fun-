@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X and O - AI Difficulty Selection</title>
+    <link rel="stylesheet" href="Levels_AI.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Choose AI Difficulty</h1>
+            <p class="subtitle">Select your challenge level</p>
+        </div>
+
+        <div class="difficulty-preview">
+            <div class="preview-board">
+                <div class="preview-cell">🤖</div>
+                <div class="preview-cell">❌</div>
+                <div class="preview-cell">⭕</div>
+                <div class="preview-cell">⭕</div>
+                <div class="preview-cell">🤖</div>
+                <div class="preview-cell">❌</div>
+                <div class="preview-cell">❌</div>
+                <div class="preview-cell">⭕</div>
+                <div class="preview-cell">🤖</div>
+            </div>
+        </div>
+
+        <div class="levels-grid">
+            <!-- Easy Level -->
+            <div class="level-card easy" onclick="selectLevel('easy')">
+                <div class="level-icon">😊</div>
+                <h3>Easy</h3>
+                <div class="level-description">
+                    <p>Perfect for beginners</p>
+                    <ul class="level-features">
+                        <li>🎯 AI makes random moves</li>
+                        <li>🎲 50% chance of optimal play</li>
+                        <li>🏆 High chance to win</li>
+                        <li>⏱️ Quick decisions</li>
+                    </ul>
+                </div>
+                <div class="difficulty-bar">
+                    <div class="difficulty-fill easy-fill"></div>
+                </div>
+                <button class="level-btn easy-btn">Play Easy</button>
+            </div>
+
+            <!-- Medium Level -->
+            <div class="level-card medium" onclick="selectLevel('medium')">
+                <div class="level-icon">🙂</div>
+                <h3>Medium</h3>
+                <div class="level-description">
+                    <p>Balanced challenge</p>
+                    <ul class="level-features">
+                        <li>🎯 AI blocks obvious wins</li>
+                        <li>🎲 70% chance of optimal play</li>
+                        <li>🏆 Fair competition</li>
+                        <li>⏱️ Thinks before moving</li>
+                    </ul>
+                </div>
+                <div class="difficulty-bar">
+                    <div class="difficulty-fill medium-fill"></div>
+                </div>
+                <button class="level-btn medium-btn">Play Medium</button>
+            </div>
+
+            <!-- Hard Level -->
+            <div class="level-card hard" onclick="selectLevel('hard')">
+                <div class="level-icon">😤</div>
+                <h3>Hard</h3>
+                <div class="level-description">
+                    <p>Serious challenge</p>
+                    <ul class="level-features">
+                        <li>🎯 AI plays strategically</li>
+                        <li>🎲 90% chance of optimal play</li>
+                        <li>🏆 Difficult to beat</li>
+                        <li>⏱️ Calculates best moves</li>
+                    </ul>
+                </div>
+                <div class="difficulty-bar">
+                    <div class="difficulty-fill hard-fill"></div>
+                </div>
+                <button class="level-btn hard-btn">Play Hard</button>
+            </div>
+
+            <!-- Expert Level -->
+            <div class="level-card expert" onclick="selectLevel('expert')">
+                <div class="level-icon">🤯</div>
+                <h3>Expert</h3>
+                <div class="level-description">
+                    <p>Ultimate challenge</p>
+                    <ul class="level-features">
+                        <li>🎯 Perfect AI play</li>
+                        <li>🎲 100% optimal moves</li>
+                        <li>🏆 Nearly impossible to win</li>
+                        <li>⏱️ Deep strategic thinking</li>
+                    </ul>
+                </div>
+                <div class="difficulty-bar">
+                    <div class="difficulty-fill expert-fill"></div>
+                </div>
+                <button class="level-btn expert-btn">Play Expert</button>
+            </div>
+        </div>
+
+        <div class="level-info">
+            <h3>💡 Tips for Success:</h3>
+            <div class="tips-grid">
+                <div class="tip">
+                    <span class="tip-icon">🎯</span>
+                    <span class="tip-text">Start with center or corners</span>
+                </div>
+                <div class="tip">
+                    <span class="tip-icon">🛡️</span>
+                    <span class="tip-text">Always block opponent's winning moves</span>
+                </div>
+                <div class="tip">
+                    <span class="tip-icon">⚡</span>
+                    <span class="tip-text">Create multiple winning threats</span>
+                </div>
+                <div class="tip">
+                    <span class="tip-icon">🧠</span>
+                    <span class="tip-text">Think 2-3 moves ahead</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="back-btn" onclick="goBack()">🔙 Back to Mode Selection</button>
+            <button class="info-btn" onclick="showInfo()">ℹ️ How Difficulty Works</button>
+        </div>
+    </div>
+
+    <!-- Info Modal -->
+    <div id="infoModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🤖 AI Difficulty Explained</h2>
+                <button class="close-btn" onclick="closeInfo()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="difficulty-explanation">
+                    <div class="explanation-item">
+                        <h4>😊 Easy (50% Optimal)</h4>
+                        <p>AI makes random moves half the time. Great for learning the game and building confidence.</p>
+                    </div>
+                    <div class="explanation-item">
+                        <h4>🙂 Medium (70% Optimal)</h4>
+                        <p>AI blocks obvious wins and makes good moves most of the time. Balanced challenge.</p>
+                    </div>
+                    <div class="explanation-item">
+                        <h4>😤 Hard (90% Optimal)</h4>
+                        <p>AI plays strategically and rarely makes mistakes. Requires careful planning to win.</p>
+                    </div>
+                    <div class="explanation-item">
+                        <h4>🤯 Expert (100% Optimal)</h4>
+                        <p>Perfect AI using minimax algorithm. Best possible outcome is a tie with perfect play.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn" onclick="closeInfo()">Got it!</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="Levels_AI.js"></script>
+</body>
+</html>
